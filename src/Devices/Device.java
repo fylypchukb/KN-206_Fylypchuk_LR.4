@@ -47,6 +47,7 @@ public class Device {
 
     @Override
     public String toString() {
+        // todo: інформативний вивід
         return "Device{" +
                 "name='" + name + '\'' +
                 '}';

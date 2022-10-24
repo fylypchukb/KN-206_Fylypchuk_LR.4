@@ -50,4 +50,8 @@ public class Room {
     public Device getDevice(int index){
         return devices.get(index);
     }
+
+    public ArrayList<Device> getDevicesList(){
+        return devices;
+    }
 }

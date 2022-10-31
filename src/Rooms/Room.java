@@ -16,7 +16,6 @@ public class Room {
     }
 
     public void addDevice(Device toAdd) {
-        // todo: додати прилад певного класу
         devices.add(toAdd);
     }
 

@@ -1,4 +1,4 @@
-package Commands;
+package Service;
 
 import Rooms.Room;
 import Rooms.VirtualHouse;

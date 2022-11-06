@@ -1,4 +1,4 @@
-package Devices;
+package Model.Rooms.Devices;
 
 import java.time.LocalDateTime;
 

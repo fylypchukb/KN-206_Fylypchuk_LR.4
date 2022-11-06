@@ -1,9 +1,8 @@
-package Rooms;
+package Model.Rooms.Devices;
 
-import Devices.Device;
+import Model.Rooms.Devices.Device;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class Room {
     private ArrayList<Device> devices;

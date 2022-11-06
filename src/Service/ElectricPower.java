@@ -1,7 +1,7 @@
 package Service;
 
-import Rooms.Room;
-import Rooms.VirtualHouse;
+import Model.Room;
+import Model.VirtualHouse;
 
 public class ElectricPower {
     public static double CalculateGeneralInRoom(Room room) {

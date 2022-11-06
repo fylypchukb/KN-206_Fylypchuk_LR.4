@@ -1,8 +1,8 @@
 package Service;
 
-import Devices.Device;
-import Rooms.Room;
-import Rooms.VirtualHouse;
+import Model.Device;
+import Model.Room;
+import Model.VirtualHouse;
 
 import java.util.ArrayList;
 

@@ -1,8 +1,8 @@
 package Service;
 
-import Devices.Device;
-import Rooms.Room;
-import Rooms.VirtualHouse;
+import Model.Device;
+import Model.Room;
+import Model.VirtualHouse;
 
 import java.util.Scanner;
 
@@ -45,16 +45,6 @@ public class DeviceManager {
         room.addDevice(device);
     }
 
-
-    public void showAllDevices(VirtualHouse house) {
-        // todo:
-    }
-
-    public void showRoomDevices(Room room) {
-        for (int i = 0; i < room.devicesCount(); i++){
-            System.out.println(room.getDevice(i));
-        }
-    }
 
     private boolean isUniqueDeviceName(String name, Room room) {
         for (int i = 0; i < room.devicesCount(); i++) {

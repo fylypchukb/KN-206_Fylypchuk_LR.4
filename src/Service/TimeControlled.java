@@ -1,6 +1,6 @@
 package Service;
 
-import Devices.Device;
+import Model.Device;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

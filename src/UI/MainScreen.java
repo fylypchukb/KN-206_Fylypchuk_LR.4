@@ -1,2 +1,5 @@
-package UI;public class MainScreen {
+package UI;
+
+public class MainScreen {
+
 }

@@ -1,5 +1,7 @@
+import DB.DataBaseStorage;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello".compareToIgnoreCase("HELLO"));
+        DataBaseStorage dataBaseStorage = new DataBaseStorage();
     }
 }

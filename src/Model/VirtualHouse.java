@@ -1,4 +1,4 @@
-package Model.Rooms.Devices;
+package Model;
 
 import java.util.ArrayList;
 import java.util.List;

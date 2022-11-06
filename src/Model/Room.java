@@ -7,7 +7,6 @@ public class Room {
     private String name;
 
     public Room(String name) {
-        // todo: перевірка на одинакове ім'я
         this.name = name;
         this.devices = new ArrayList<>();
     }

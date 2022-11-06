@@ -10,7 +10,8 @@ public class SearchDevice {
     public static Device generalSearch(VirtualHouse house, int searchID) {
         Device toReturn = null;
         for (int i = 0; i < house.roomCount(); i++) {
-            toReturn = roomSearch(house.getRoom(i), searchID);
+            Device searchResult = roomSearch(house.getRoom(i), searchID);
+            toReturn = (searchResult != null) ? searchResult : toReturn;
         }
 
         return toReturn;

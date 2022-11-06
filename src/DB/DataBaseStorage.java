@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class DataBaseStorage {
 
-    private ArrayList<VirtualHouse> houseArrayList = null;
+    private static ArrayList<VirtualHouse> houseArrayList = null;
 
-    public ArrayList<VirtualHouse> getHouseArrayList() {
+    public static ArrayList<VirtualHouse> getHouseArrayList() {
         return houseArrayList;
     }
 

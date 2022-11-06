@@ -22,7 +22,6 @@ public class DeviceManager {
     }
 
     public void createDevice(Room room) {
-        // todo: створити пристрій і добавити в кімнату
         Scanner scanner = new Scanner(System.in);
         System.out.print("\nName of your device: ");
         String name = scanner.nextLine();

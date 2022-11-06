@@ -51,10 +51,10 @@ public class Device {
 
     @Override
     public String toString() {
-        // todo: інформативний вивід
-        return "Device{" +
-                "name='" + name + '\'' +
-                '}';
+        String toReturn = getName() + " - " + getId() + " - ";
+        toReturn += (isActive) ? "Activated" : "Deactivated";
+
+        return toReturn;
     }
 
     public void activateDevice() {

@@ -1,5 +1,6 @@
 package UI;
 
+import Command.ActiveDeviceListCommand;
 import Command.SwitchCommand;
 import DB.DataBaseStorage;
 import Model.Room;
@@ -40,7 +41,8 @@ public class DevicesListScreen extends Screen {
                             Integer.parseInt(words[1])));
             command.execute();
         } else if (words[0].compareTo("/active") == 0) {
-            // todo: action
+            ActiveDeviceListCommand command = new ActiveDeviceListCommand();
+            command.execute();
         } else if (words[0].compareTo("/add") == 0) {
             // todo: add device action
         } else if (words[0].compareTo("/delete") == 0) {

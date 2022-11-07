@@ -12,8 +12,14 @@ public class ActiveDevices {
     }
 
     public static void showActiveHouse(VirtualHouse house) {
-        for (Device device : SearchDevice.findActiveHouse(house)) {
-            System.out.println(device);
+        for (int i = 0; i < house.roomCount(); i++) {
+            Room room = house.getRoom(i);
+            System.out.println("---" + room.getName());
+            for (int j = 0; j < room.devicesCount(); j++) {
+                if (room.getDevice(j).getIsActive()) {
+                    System.out.println(room.getDevice(j));
+                }
+            }
         }
     }
 }

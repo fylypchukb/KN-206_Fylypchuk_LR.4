@@ -1,34 +1,34 @@
 package UI;
 
 import Command.RedirectViewCommand;
-import DB.DataBaseStorage;
 
 import java.util.Scanner;
 
 public class MainScreen implements Screen {
 
-    public MainScreen(){
+    public MainScreen() {
 
     }
 
     @Override
-    public void showScreen(){
+    public void showScreen() {
         System.out.println("\n1. Show devices");
         System.out.println("2. Show rooms");
         System.out.println("3. Calculate power consumption");
+        System.out.println("4. Search for device");
 
         actionChoose();
     }
 
-    public void actionChoose(){
+    public void actionChoose() {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-        RedirectViewCommand command;
+        RedirectViewCommand command = null;
 
-        switch (input){
+        switch (input) {
             case 1:
-                command = new RedirectViewCommand( new DevicesListScreen());
+                command = new RedirectViewCommand(new DevicesListScreen());
                 command.execute();
             case 2:
                 command = new RedirectViewCommand(new RoomListScreen());
@@ -36,9 +36,14 @@ public class MainScreen implements Screen {
             case 3:
                 command = new RedirectViewCommand(new ElectricalPowerScreen());
                 command.execute();
+            case 4:
+                command = new RedirectViewCommand(new SearchScreen());
+                command.execute();
             case 0:
                 return;
         }
+
+
     }
 
 }

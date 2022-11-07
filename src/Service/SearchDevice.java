@@ -21,6 +21,8 @@ public class SearchDevice {
         Device toReturn = null;
         for (int i = 0; i < house.roomCount(); i++) {
             toReturn = roomSearch(house.getRoom(i), searchName);
+            if (toReturn != null)
+                break;
         }
 
         return toReturn;

@@ -19,6 +19,7 @@ public class ActiveDevices {
                 if (room.getDevice(j).getIsActive()) {
                     System.out.println(room.getDevice(j));
                 }
+                System.out.println();
             }
         }
     }

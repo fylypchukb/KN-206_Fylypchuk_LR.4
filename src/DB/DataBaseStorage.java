@@ -27,7 +27,7 @@ public class DataBaseStorage {
         virtualHouse.getRoom(1).addDevice(new Device("Table LED lamp", 6543, 4));
         virtualHouse.getRoom(1).addDevice(new Device("Electronic clock", 8132, 6));
 
-        virtualHouse.addRoom(new Room("Living room"));
+        virtualHouse.addRoom(new Room("LivingRoom"));
         virtualHouse.getRoom(2).addDevice(new Device("PS5", 3983, 800));
         virtualHouse.getRoom(2).addDevice(new Device("TV", 5132, 500));
         virtualHouse.getRoom(2).addDevice(new Device("Musical center", 7915, 600));

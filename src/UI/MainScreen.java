@@ -33,6 +33,9 @@ public class MainScreen implements Screen {
             case 2:
                 command = new RedirectViewCommand(new RoomListScreen());
                 command.execute();
+            case 3:
+                command = new RedirectViewCommand(new ElectricalPowerScreen());
+                command.execute();
             case 0:
                 return;
         }

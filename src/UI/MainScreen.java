@@ -5,7 +5,7 @@ import DB.DataBaseStorage;
 
 import java.util.Scanner;
 
-public class MainScreen extends Screen {
+public class MainScreen implements Screen {
     private DataBaseStorage dataBaseStorage = null;
 
     public MainScreen(){
@@ -25,10 +25,15 @@ public class MainScreen extends Screen {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
+        RedirectViewCommand command;
+
         switch (input){
             case 1:
-                RedirectViewCommand redirectView = new RedirectViewCommand( new DevicesListScreen());
-                redirectView.execute();
+                command = new RedirectViewCommand( new DevicesListScreen());
+                command.execute();
+            case 2:
+                command = new RedirectViewCommand(new RoomListScreen());
+                command.execute();
             case 0:
                 return;
         }

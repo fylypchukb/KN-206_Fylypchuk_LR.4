@@ -1,7 +1,5 @@
 package UI;
 
-public class Screen {
-    public void showScreen(){
-
-    }
+public interface Screen {
+    public void showScreen();
 }

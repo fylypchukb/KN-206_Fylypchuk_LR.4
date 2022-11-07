@@ -14,13 +14,8 @@ public class VirtualHouse {
         rooms.add(toAdd);
     }
 
-    public void removeRoom(String name){
-        for (int i = 0; i < rooms.size(); i++){
-            if (rooms.get(i).getName().compareToIgnoreCase(name) == 0){
-                rooms.remove(i);
-                break;
-            }
-        }
+    public void removeRoom(int index){
+        rooms.remove(index);
     }
 
     public int roomCount(){

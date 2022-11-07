@@ -8,7 +8,7 @@ import Service.SearchRoom;
 
 import java.util.Scanner;
 
-public class DevicesListScreen extends Screen {
+public class DevicesListScreen implements Screen {
 
     public DevicesListScreen() {
     }

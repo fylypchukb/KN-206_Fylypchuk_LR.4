@@ -14,6 +14,10 @@ public class DataBaseStorage {
         return houseArrayList;
     }
 
+    public static VirtualHouse getHouse(int index){
+        return houseArrayList.get(index);
+    }
+
     public DataBaseStorage() {
         VirtualHouse virtualHouse = new VirtualHouse();
 

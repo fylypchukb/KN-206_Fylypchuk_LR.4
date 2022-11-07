@@ -6,10 +6,9 @@ import DB.DataBaseStorage;
 import java.util.Scanner;
 
 public class MainScreen implements Screen {
-    private DataBaseStorage dataBaseStorage = null;
 
     public MainScreen(){
-        dataBaseStorage = new DataBaseStorage();
+
     }
 
     @Override

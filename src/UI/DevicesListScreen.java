@@ -35,32 +35,30 @@ public class DevicesListScreen implements Screen {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
         var words = input.split(" ");
+
+        Command command = null;
         if (words[0].compareTo("/switch") == 0) {
-            SwitchCommand command =
-                    new SwitchCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
+            command = new SwitchCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
                             Integer.parseInt(words[1])));
-            command.execute();
+
         } else if (words[0].compareTo("/active") == 0) {
-            ActiveDeviceListCommand command = new ActiveDeviceListCommand();
-            command.execute();
+            command = new ActiveDeviceListCommand();
+
         } else if (words[0].compareTo("/add") == 0) {
-            AddDeviceCommand command =
-                    new AddDeviceCommand(SearchRoom.searchRoom(DataBaseStorage.getHouseArrayList().get(0), words[1]));
-            command.execute();
+            command = new AddDeviceCommand(SearchRoom.searchRoom(DataBaseStorage.getHouseArrayList().get(0), words[1]));
+
         } else if (words[0].compareTo("/delete") == 0) {
-            DeleteCommand command =
-                    new DeleteCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
+            command = new DeleteDeviceCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
                             Integer.parseInt(words[1])));
-            command.execute();
         } else if (words[0].compareTo("/sort") == 0) {
-            SortDeviceListScreenCommand command = new SortDeviceListScreenCommand();
-            command.execute();
+            command = new SortDeviceListScreenCommand();
         } else if (words[0].compareTo("/help") == 0) {
             printHelp();
         } else if (words[0].compareTo("/main") == 0) {
-            RedirectViewCommand command = new RedirectViewCommand(new MainScreen());
-            command.execute();
+            command = new RedirectViewCommand(new MainScreen());
         }
+
+        command.execute();
     }
 
     private void printHelp() {

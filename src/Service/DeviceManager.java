@@ -7,18 +7,6 @@ import Model.VirtualHouse;
 import java.util.Scanner;
 
 public class DeviceManager {
-    public static void createRoom(VirtualHouse house) {
-        System.out.print("\nEnter room's name: ");
-        Scanner scanner = new Scanner(System.in);
-        String name = scanner.nextLine();
-        while (!isUniqueRoomName(house, name)) {
-            System.out.print("\nThat name is already taken.\nName of your room: ");
-            name = scanner.nextLine();
-        }
-        Room toReturn = new Room(name);
-
-        house.addRoom(toReturn);
-    }
 
     public static VirtualHouse createHouse() {
         VirtualHouse house = new VirtualHouse();
@@ -54,6 +42,7 @@ public class DeviceManager {
             for (int j = 0; j < room.devicesCount(); j++){
                 if (room.getDevice(j).getId() == device.getId()){
                     room.removeDevice(j);
+                    break;
                 }
             }
         }
@@ -80,13 +69,4 @@ public class DeviceManager {
         return true;
     }
 
-    private static boolean isUniqueRoomName(VirtualHouse house, String name) {
-        for (int i = 0; i < house.roomCount(); i++) {
-            if (house.getRoom(i).getName().compareToIgnoreCase(name) == 0) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 }

@@ -1,8 +1,6 @@
 package UI;
 
-import Command.AddRoomCommand;
-import Command.Command;
-import Command.ShowDevicesInRoomCommand;
+import Command.*;
 import DB.DataBaseStorage;
 import Model.Room;
 
@@ -28,14 +26,21 @@ public class RoomListScreen implements Screen {
 
     private void actionMaker() {
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        var words = input.split(" ");
-
         Command command = null;
-        if (words[0].compareTo("/show") == 0) {
-            command = new ShowDevicesInRoomCommand(words[1]);
-        } else if (words[0].compareTo("/add") == 0) {
-            command = new AddRoomCommand();
+        while (command == null) {
+            String input = scanner.nextLine();
+            var words = input.split(" ");
+
+            if (words[0].compareTo("/show") == 0) {
+                command = new ShowDevicesInRoomCommand(words[1]);
+            } else if (words[0].compareTo("/add") == 0) {
+                command = new AddRoomCommand();
+            } else if (words[0].compareTo("/delete") == 0) {
+                command = new DeleteRoomCommand(words[1]);
+            } else if (words[0].compareTo("/main") == 0) {
+                command = new RedirectViewCommand(new MainScreen());
+            } else
+                System.out.println("Command not found!");
         }
 
         command.execute();
@@ -46,6 +51,7 @@ public class RoomListScreen implements Screen {
         System.out.println("Add room - /add");
         System.out.println("Delete room - /delete {roomName}");
         System.out.println("Sort by power consumption - /sort");
+        System.out.println("Main screen - /main");
     }
 }
 

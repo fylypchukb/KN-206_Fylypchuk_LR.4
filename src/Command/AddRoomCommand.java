@@ -1,7 +1,7 @@
 package Command;
 
 import DB.DataBaseStorage;
-import Service.DeviceManager;
+import Service.RoomManager;
 import UI.RoomListScreen;
 
 public class AddRoomCommand implements Command{
@@ -11,7 +11,7 @@ public class AddRoomCommand implements Command{
 
     @Override
     public void execute() {
-        DeviceManager.createRoom(DataBaseStorage.getHouse(0));
+        RoomManager.createRoom(DataBaseStorage.getHouse(0));
         new RedirectViewCommand(new RoomListScreen()).execute();
     }
 }

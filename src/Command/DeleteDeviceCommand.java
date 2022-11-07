@@ -5,10 +5,10 @@ import Model.Device;
 import Service.DeviceManager;
 import UI.DevicesListScreen;
 
-public class DeleteCommand implements Command{
+public class DeleteDeviceCommand implements Command{
     private Device device = null;
 
-    public DeleteCommand(Device device) {
+    public DeleteDeviceCommand(Device device) {
         this.device = device;
     }
 

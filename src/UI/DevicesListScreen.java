@@ -2,6 +2,7 @@ package UI;
 
 import Command.ActiveDeviceListCommand;
 import Command.AddDeviceCommand;
+import Command.DeleteCommand;
 import Command.SwitchCommand;
 import DB.DataBaseStorage;
 import Model.Room;
@@ -50,7 +51,10 @@ public class DevicesListScreen extends Screen {
                     new AddDeviceCommand(SearchRoom.searchRoom(DataBaseStorage.getHouseArrayList().get(0), words[1]));
             command.execute();
         } else if (words[0].compareTo("/delete") == 0) {
-            // todo: delete device action
+            DeleteCommand command =
+                    new DeleteCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
+                            Integer.parseInt(words[1])));
+            command.execute();
         } else if (words[0].compareTo("/sort") == 0) {
             // todo: sort action
         } else if (words[0].compareTo("/help") == 0) {
@@ -62,7 +66,7 @@ public class DevicesListScreen extends Screen {
         System.out.println("Activate/Deactivate - /switch {id}");
         System.out.println("Show only active - /active");
         System.out.println("Add device - /add {roomName}");
-        System.out.println("Delete device - /delete");
+        System.out.println("Delete device - /delete {id}");
         System.out.println("Sort - /sort");
     }
 }

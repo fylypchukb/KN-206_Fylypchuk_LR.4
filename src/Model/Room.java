@@ -21,14 +21,10 @@ public class Room {
         }
     }
 
-    public void removeDevice(int searchId){
-        for (int i = 0; i < devices.size(); i++){
-            if (devices.get(i).getId() == searchId) {
-                devices.remove(i);
-                break;
-            }
-        }
+    public void removeDevice(int id) {
+        devices.remove(id);
     }
+
 
     public String getName() {
         return name;
@@ -38,15 +34,15 @@ public class Room {
         this.name = name;
     }
 
-    public int devicesCount(){
+    public int devicesCount() {
         return devices.size();
     }
 
-    public Device getDevice(int index){
+    public Device getDevice(int index) {
         return devices.get(index);
     }
 
-    public ArrayList<Device> getDevicesList(){
+    public ArrayList<Device> getDevicesList() {
         return devices;
     }
 }

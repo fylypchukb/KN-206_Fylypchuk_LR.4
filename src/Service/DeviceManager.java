@@ -48,6 +48,17 @@ public class DeviceManager {
         room.addDevice(device);
     }
 
+    public static void deleteDevice(VirtualHouse house, Device device) {
+        for (int i = 0; i < house.roomCount(); i++){
+            Room room = house.getRoom(i);
+            for (int j = 0; j < room.devicesCount(); j++){
+                if (room.getDevice(j).getId() == device.getId()){
+                    room.removeDevice(j);
+                }
+            }
+        }
+    }
+
 
     private static boolean isUniqueDeviceName(String name, Room room) {
         for (int i = 0; i < room.devicesCount(); i++) {

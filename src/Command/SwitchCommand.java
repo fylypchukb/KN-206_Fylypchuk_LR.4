@@ -5,7 +5,7 @@ import UI.DevicesListScreen;
 
 public class SwitchCommand implements Command {
 
-    private Device device;
+    private Device device = null;
 
     public SwitchCommand(Device device){
         this.device = device;

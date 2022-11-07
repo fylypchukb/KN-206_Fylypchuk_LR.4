@@ -6,7 +6,7 @@ import UI.DevicesListScreen;
 
 public class AddDeviceCommand implements Command{
 
-    Room room = null;
+    private Room room = null;
 
     public AddDeviceCommand(Room room) {
         this.room = room;

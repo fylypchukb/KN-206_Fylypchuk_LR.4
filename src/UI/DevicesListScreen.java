@@ -33,29 +33,31 @@ public class DevicesListScreen implements Screen {
 
     private void actionMaker() {
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        var words = input.split(" ");
-
         Command command = null;
-        if (words[0].compareTo("/switch") == 0) {
-            command = new SwitchCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
-                            Integer.parseInt(words[1])));
 
-        } else if (words[0].compareTo("/active") == 0) {
-            command = new ActiveDeviceListCommand();
+        while (command == null) {
+            String input = scanner.nextLine();
+            var words = input.split(" ");
+            if (words[0].compareTo("/switch") == 0) {
+                command = new SwitchCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
+                        Integer.parseInt(words[1])));
+            } else if (words[0].compareTo("/active") == 0) {
+                command = new ActiveDeviceListCommand();
+            } else if (words[0].compareTo("/add") == 0) {
+                command = new AddDeviceCommand(SearchRoom.searchRoom(DataBaseStorage.getHouseArrayList().get(0), words[1]));
 
-        } else if (words[0].compareTo("/add") == 0) {
-            command = new AddDeviceCommand(SearchRoom.searchRoom(DataBaseStorage.getHouseArrayList().get(0), words[1]));
-
-        } else if (words[0].compareTo("/delete") == 0) {
-            command = new DeleteDeviceCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
-                            Integer.parseInt(words[1])));
-        } else if (words[0].compareTo("/sort") == 0) {
-            command = new SortDeviceListScreenCommand();
-        } else if (words[0].compareTo("/help") == 0) {
-            printHelp();
-        } else if (words[0].compareTo("/main") == 0) {
-            command = new RedirectViewCommand(new MainScreen());
+            } else if (words[0].compareTo("/delete") == 0) {
+                command = new DeleteDeviceCommand(SearchDevice.generalSearch(DataBaseStorage.getHouseArrayList().get(0),
+                        Integer.parseInt(words[1])));
+            } else if (words[0].compareTo("/sort") == 0) {
+                command = new SortDeviceListScreenCommand();
+            } else if (words[0].compareTo("/help") == 0) {
+                printHelp();
+            } else if (words[0].compareTo("/main") == 0) {
+                command = new RedirectViewCommand(new MainScreen());
+            }
+            else
+                System.out.println("Command not found! Type \"/help\"");
         }
 
         command.execute();

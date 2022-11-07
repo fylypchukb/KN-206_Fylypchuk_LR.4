@@ -39,8 +39,12 @@ public class RoomListScreen implements Screen {
                 command = new DeleteRoomCommand(words[1]);
             } else if (words[0].compareTo("/main") == 0) {
                 command = new RedirectViewCommand(new MainScreen());
+            } else if (words[0].compareTo("/sort") == 0) {
+                command = new SortRoomListScreenCommand();
+            } else if (words[0].compareTo("help") == 0) {
+                printHelp();
             } else
-                System.out.println("Command not found!");
+                System.out.println("Command not found! Type \"/help\"");
         }
 
         command.execute();

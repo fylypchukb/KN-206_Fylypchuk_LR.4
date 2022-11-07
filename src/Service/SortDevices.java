@@ -11,9 +11,9 @@ import java.util.Comparator;
 
 
 public class SortDevices {
-    public static ArrayList<Device> sortRoom(Room room){
+    public static ArrayList<Device> sortDevicesInRoom(Room room){
         ArrayList<Device> toReturn = room.getDevicesList();
-        Collections.sort(toReturn, new SortByPower());
+        Collections.sort(toReturn, new SortDeviceByPower());
         return toReturn;
     }
 
@@ -23,12 +23,12 @@ public class SortDevices {
             toReturn.addAll(house.getRoom(i).getDevicesList());
         }
 
-        Collections.sort(toReturn, new SortByPower().reversed());
+        Collections.sort(toReturn, new SortDeviceByPower().reversed());
         return toReturn;
     }
 }
 
-class SortByPower implements Comparator<Device> {
+class SortDeviceByPower implements Comparator<Device> {
 
     @Override
     public int compare(Device o1, Device o2) {

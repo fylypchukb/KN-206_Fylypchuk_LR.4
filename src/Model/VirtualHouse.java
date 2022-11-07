@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VirtualHouse {
-    private List<Room> rooms;
+    private ArrayList<Room> rooms;
 
     public VirtualHouse(){
         rooms = new ArrayList<Room>();
@@ -24,5 +24,9 @@ public class VirtualHouse {
 
     public Room getRoom(int index){
         return rooms.get(index);
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 }

@@ -34,7 +34,7 @@ public class Device {
     }
 
     public double getElectricPower() {
-        return electricPower;
+        return (isActive) ? electricPower : 0;
     }
 
     public void setElectricPower(double electricPower) {
@@ -60,7 +60,7 @@ public class Device {
     public String stingPower() {
         String toReturn = this.toString();
 
-        return toReturn + " - " + electricPower;
+        return toReturn + " - " + ((isActive) ? electricPower : 0);
     }
 
     public void activateDevice() {

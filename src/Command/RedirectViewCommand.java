@@ -2,11 +2,11 @@ package Command;
 
 import UI.Screen;
 
-public class RedirectView implements Command{
+public class RedirectViewCommand implements Command{
 
     private Screen screen = null;
 
-    public RedirectView(Screen screen){
+    public RedirectViewCommand(Screen screen){
         this.screen = screen;
     }
 

@@ -15,6 +15,6 @@ public class DeleteCommand implements Command{
     @Override
     public void execute() {
         DeviceManager.deleteDevice(DataBaseStorage.getHouseArrayList().get(0), device);
-        new RedirectView( new DevicesListScreen()).execute();
+        new RedirectViewCommand( new DevicesListScreen()).execute();
     }
 }

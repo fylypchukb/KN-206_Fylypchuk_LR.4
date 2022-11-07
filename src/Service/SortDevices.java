@@ -11,19 +11,19 @@ import java.util.Comparator;
 
 
 public class SortDevices {
-    public ArrayList<Device> sortRoom(Room room){
+    public static ArrayList<Device> sortRoom(Room room){
         ArrayList<Device> toReturn = room.getDevicesList();
         Collections.sort(toReturn, new SortByPower());
         return toReturn;
     }
 
-    public ArrayList<Device> sortHouse(VirtualHouse house){
+    public static ArrayList<Device> sortHouse(VirtualHouse house){
         ArrayList<Device> toReturn = new ArrayList<>();
         for (int i = 0; i < house.roomCount(); i++){
             toReturn.addAll(house.getRoom(i).getDevicesList());
         }
 
-        Collections.sort(toReturn, new SortByPower());
+        Collections.sort(toReturn, new SortByPower().reversed());
         return toReturn;
     }
 }

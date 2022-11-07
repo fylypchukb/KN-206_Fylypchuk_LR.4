@@ -57,6 +57,12 @@ public class Device {
         return toReturn;
     }
 
+    public String stingPower() {
+        String toReturn = this.toString();
+
+        return toReturn + " - " + electricPower;
+    }
+
     public void activateDevice() {
         isActive = true;
     }

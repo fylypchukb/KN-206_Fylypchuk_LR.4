@@ -15,6 +15,6 @@ public class AddDeviceCommand implements Command{
     @Override
     public void execute() {
         DeviceManager.createDevice(room);
-        new RedirectView(new DevicesListScreen()).execute();
+        new RedirectViewCommand(new DevicesListScreen()).execute();
     }
 }

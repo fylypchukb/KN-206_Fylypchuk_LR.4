@@ -1,9 +1,6 @@
 package UI;
 
-import Command.ActiveDeviceListCommand;
-import Command.AddDeviceCommand;
-import Command.DeleteCommand;
-import Command.SwitchCommand;
+import Command.*;
 import DB.DataBaseStorage;
 import Model.Room;
 import Service.SearchDevice;
@@ -56,9 +53,13 @@ public class DevicesListScreen extends Screen {
                             Integer.parseInt(words[1])));
             command.execute();
         } else if (words[0].compareTo("/sort") == 0) {
-            // todo: sort action
+            SortDeviceListScreenCommand command = new SortDeviceListScreenCommand();
+            command.execute();
         } else if (words[0].compareTo("/help") == 0) {
             printHelp();
+        } else if (words[0].compareTo("/main") == 0) {
+            RedirectViewCommand command = new RedirectViewCommand(new MainScreen());
+            command.execute();
         }
     }
 
@@ -68,5 +69,6 @@ public class DevicesListScreen extends Screen {
         System.out.println("Add device - /add {roomName}");
         System.out.println("Delete device - /delete {id}");
         System.out.println("Sort - /sort");
+        System.out.println("Main screen - /main");
     }
 }

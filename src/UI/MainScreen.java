@@ -1,6 +1,6 @@
 package UI;
 
-import Command.RedirectView;
+import Command.RedirectViewCommand;
 import DB.DataBaseStorage;
 
 import java.util.Scanner;
@@ -14,7 +14,7 @@ public class MainScreen extends Screen {
 
     @Override
     public void showScreen(){
-        System.out.println("1. Show devices");
+        System.out.println("\n1. Show devices");
         System.out.println("2. Show rooms");
         System.out.println("3. Calculate power consumption");
 
@@ -27,8 +27,10 @@ public class MainScreen extends Screen {
 
         switch (input){
             case 1:
-                RedirectView redirectView = new RedirectView( new DevicesListScreen());
+                RedirectViewCommand redirectView = new RedirectViewCommand( new DevicesListScreen());
                 redirectView.execute();
+            case 0:
+                return;
         }
     }
 

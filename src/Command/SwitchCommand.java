@@ -14,7 +14,7 @@ public class SwitchCommand implements Command {
     @Override
     public void execute() {
         device.setActive(!device.getIsActive());
-        var forAction= new RedirectView(new DevicesListScreen());
+        var forAction= new RedirectViewCommand(new DevicesListScreen());
         forAction.execute();
     }
 }

@@ -5,7 +5,6 @@ import Model.Room;
 import Model.VirtualHouse;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 
@@ -13,7 +12,7 @@ import java.util.Comparator;
 public class SortDevices {
     public static ArrayList<Device> sortDevicesInRoom(Room room){
         ArrayList<Device> toReturn = room.getDevicesList();
-        Collections.sort(toReturn, new SortDeviceByPower());
+        toReturn.sort(new SortDeviceByPower());
         return toReturn;
     }
 
@@ -23,7 +22,7 @@ public class SortDevices {
             toReturn.addAll(house.getRoom(i).getDevicesList());
         }
 
-        Collections.sort(toReturn, new SortDeviceByPower().reversed());
+        toReturn.sort(new SortDeviceByPower().reversed());
         return toReturn;
     }
 }
@@ -32,12 +31,6 @@ class SortDeviceByPower implements Comparator<Device> {
 
     @Override
     public int compare(Device o1, Device o2) {
-        if (o1.getElectricPower() > o2.getElectricPower()){
-            return 1;
-        } else if (o1.getElectricPower() < o2.getElectricPower()) {
-            return -1;
-        } else {
-            return 0;
-        }
+        return Double.compare(o1.getElectricPower(), o2.getElectricPower());
     }
 }

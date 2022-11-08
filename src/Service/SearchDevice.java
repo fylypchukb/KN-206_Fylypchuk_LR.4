@@ -49,7 +49,7 @@ public class SearchDevice {
     }
 
     public static ArrayList<Device> findActiveRoom(Room room) {
-        ArrayList<Device> toReturn = new ArrayList<Device>();
+        ArrayList<Device> toReturn = new ArrayList<>();
         for (int i = 0; i < room.devicesCount(); i++) {
             if (room.getDevice(i).getIsActive()) {
                 toReturn.add(room.getDevice(i));
@@ -60,7 +60,7 @@ public class SearchDevice {
     }
 
     public static ArrayList<Device> findActiveHouse(VirtualHouse house){
-        ArrayList<Device> toReturn = new ArrayList<Device>();
+        ArrayList<Device> toReturn = new ArrayList<>();
         for (int i = 0; i < house.roomCount(); i ++){
             toReturn.addAll(findActiveRoom(house.getRoom(i)));
         }

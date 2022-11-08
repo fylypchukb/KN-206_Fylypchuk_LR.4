@@ -15,7 +15,6 @@ public class SearchScreen implements Screen {
     }
 
     private void screenContext() {
-        boolean isRoomSearch = false;
 
         System.out.println("\n1. Search in the house");
         System.out.println("2. Search in the room");

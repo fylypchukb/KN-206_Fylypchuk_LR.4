@@ -9,8 +9,7 @@ import java.util.Scanner;
 public class DeviceManager {
 
     public static VirtualHouse createHouse() {
-        VirtualHouse house = new VirtualHouse();
-        return house;
+        return new VirtualHouse();
     }
 
     public static void createDevice(Room room) {

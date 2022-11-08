@@ -5,8 +5,7 @@ import Service.RoomManager;
 import UI.RoomListScreen;
 
 public class DeleteRoomCommand implements Command{
-
-    private String roomName;
+    private final String roomName;
 
     public DeleteRoomCommand(String roomName) {
         this.roomName = roomName;

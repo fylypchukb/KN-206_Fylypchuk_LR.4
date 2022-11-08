@@ -3,17 +3,16 @@ package Service;
 import Model.Device;
 
 import java.time.LocalDateTime;
-import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 
 public class TimeControlled {
 
-    private static Thread timeControlledThread = new Thread(() -> {
+    private static final Thread timeControlledThread = new Thread(() -> {
         while (true) {
             checkTime();
         }
     });
-    private static ArrayList<Device> timeControlledDevices = new ArrayList<>();
+    private static final ArrayList<Device> timeControlledDevices = new ArrayList<>();
 
     public static void switchOnTime(Device device, LocalDateTime time) {
         device.setSwitchTime(time);

@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Room {
-    private ArrayList<Device> devices;
+    private final ArrayList<Device> devices;
     private String name;
 
     public Room(String name) {

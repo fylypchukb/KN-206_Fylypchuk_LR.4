@@ -64,7 +64,7 @@ public class Device {
     }
 
     public String stringTime(){
-        return toString() + " - " + switchTime;
+        return this + " - " + switchTime;
     }
 
     public void activateDevice() {

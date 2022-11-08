@@ -25,7 +25,7 @@ public class MainScreen implements Screen {
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
 
-        RedirectViewCommand command = null;
+        RedirectViewCommand command;
 
         switch (input) {
             case 1:

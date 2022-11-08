@@ -3,18 +3,24 @@ package Command;
 import DB.DataBaseStorage;
 import Model.Device;
 import Service.DeviceManager;
+import Service.SearchDevice;
 import UI.DevicesListScreen;
 
-public class DeleteDeviceCommand implements Command{
-    private Device device = null;
+public class DeleteDeviceCommand implements Command {
+    private final String request;
 
-    public DeleteDeviceCommand(Device device) {
-        this.device = device;
+    public DeleteDeviceCommand(String request) {
+        this.request = request;
     }
 
     @Override
     public void execute() {
-        DeviceManager.deleteDevice(DataBaseStorage.getHouseArrayList().get(0), device);
-        new RedirectViewCommand( new DevicesListScreen()).execute();
+        Device device = SearchDevice.generalSearch(DataBaseStorage.getHouse(0), Integer.parseInt(request));
+
+        if (device != null)
+            DeviceManager.deleteDevice(DataBaseStorage.getHouseArrayList().get(0), device);
+        else
+            System.out.println("Device is no found!");
+        new RedirectViewCommand(new DevicesListScreen()).execute();
     }
 }

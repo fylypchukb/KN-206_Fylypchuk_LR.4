@@ -5,14 +5,13 @@ import Model.Device;
 import Service.SearchDevice;
 import Service.TimeControlled;
 import UI.DevicesListScreen;
-import UI.Screen;
 import UI.TimeControlledScreen;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
-public class AddTimeDeviceCommand implements Command{
+public class AddTimeDeviceCommand implements Command {
 
     @Override
     public void execute() {
@@ -24,19 +23,23 @@ public class AddTimeDeviceCommand implements Command{
 
         Device device = SearchDevice.generalSearch(DataBaseStorage.getHouse(0), id);
 
-        System.out.print("Enter the Date (dd-MM-yyyy HH:mm:ss): ");
-        scanner.nextLine();
-        String inputDate = scanner.nextLine();
+        if (device != null) {
+            System.out.print("Enter the Date (dd-MM-yyyy HH:mm:ss): ");
+            scanner.nextLine();
+            String inputDate = scanner.nextLine();
 
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        LocalDateTime dateTime = null;
-        try {
-            dateTime = LocalDateTime.parse(inputDate, myFormatObj);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+            LocalDateTime dateTime = null;
+            try {
+                dateTime = LocalDateTime.parse(inputDate, myFormatObj);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        TimeControlled.switchOnTime(device, dateTime);
+            TimeControlled.switchOnTime(device, dateTime);
+        } else
+            System.out.println("Device is not found!");
+
         new RedirectViewCommand(new TimeControlledScreen()).execute();
     }
 }

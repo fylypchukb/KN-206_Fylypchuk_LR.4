@@ -8,8 +8,7 @@ import UI.RoomListScreen;
 import java.io.IOException;
 
 public class ShowDevicesInRoomCommand implements Command{
-
-    private Room room;
+    private final Room room;
 
     public ShowDevicesInRoomCommand(String name) {
         this.room = SearchRoom.searchRoom(DataBaseStorage.getHouseArrayList().get(0), name);

@@ -63,6 +63,10 @@ public class Device {
         return toReturn + " - " + ((isActive) ? electricPower : 0);
     }
 
+    public String stringTime(){
+        return toString() + " - " + switchTime;
+    }
+
     public void activateDevice() {
         isActive = true;
     }

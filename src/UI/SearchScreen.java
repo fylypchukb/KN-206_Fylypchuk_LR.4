@@ -42,7 +42,7 @@ public class SearchScreen implements Screen {
             inputString = scanner.nextLine();
             command = new SearchRoomScreenCommand(inputString);
 
-        } else if (inputInt == 0) {
+        } else {
             command = new RedirectViewCommand(new MainScreen());
         }
 

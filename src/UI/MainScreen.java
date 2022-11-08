@@ -16,6 +16,7 @@ public class MainScreen implements Screen {
         System.out.println("2. Show rooms");
         System.out.println("3. Calculate power consumption");
         System.out.println("4. Search for device");
+        System.out.println("5. Time-controlled devices");
 
         actionChoose();
     }
@@ -38,6 +39,9 @@ public class MainScreen implements Screen {
                 command.execute();
             case 4:
                 command = new RedirectViewCommand(new SearchScreen());
+                command.execute();
+            case 5:
+                command = new RedirectViewCommand(new TimeControlledScreen());
                 command.execute();
             case 0:
                 return;

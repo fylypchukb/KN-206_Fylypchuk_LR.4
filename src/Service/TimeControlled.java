@@ -3,57 +3,67 @@ package Service;
 import Model.Device;
 
 import java.time.LocalDateTime;
+import java.time.chrono.IsoChronology;
 import java.util.ArrayList;
 
 public class TimeControlled {
 
-    private static Thread timeControlledThread = null;
-    private static ArrayList<Device> timeControlledDevices = null;
+    private static Thread timeControlledThread = new Thread(() -> {
+        while (true) {
+            checkTime();
+        }
+    });
+    private static ArrayList<Device> timeControlledDevices = new ArrayList<>();
 
-    public void switchOnTime(Device device, LocalDateTime time) {
+    public static void switchOnTime(Device device, LocalDateTime time) {
         device.setSwitchTime(time);
         formDevicesList(device);
     }
 
-    private void formDevicesList(Device device) {
-        if (timeControlledDevices == null) {
-            timeControlledDevices = new ArrayList<>();
-        }
-        if (timeControlledThread == null) {
+    private static void formDevicesList(Device device) {
+        if (timeControlledThread.getState() == Thread.State.NEW) {
             setAsync();
+        }
+        if (timeControlledThread.getState() == Thread.State.WAITING){
+            timeControlledThread.notifyAll();
         }
         timeControlledDevices.add(device);
     }
 
-    public void setAsync() {
-        timeControlledThread = new Thread(() -> {
-            while (true) {
-                checkTime();
-            }
-        });
-
+    private static void setAsync() {
+        timeControlledThread.setName("Time-control");
         timeControlledThread.start();
     }
 
-    private void checkTime() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
+    private static void checkTime() {
         LocalDateTime curr = LocalDateTime.now();
         for (int i = 0; i < timeControlledDevices.size(); i++) {
-            if (curr.isEqual(timeControlledDevices.get(i).getSwitchTime())) {
+            if (curr.isAfter(timeControlledDevices.get(i).getSwitchTime())) {
+                System.out.println(timeControlledDevices.get(i).getName() + " is deactivated!");
                 timeControlledDevices.get(i).deactivateDevice();
                 timeControlledDevices.remove(i);
                 i--;
             }
         }
+
         if (timeControlledDevices.size() == 0) {
-            timeControlledThread.interrupt();
+            try {
+                timeControlledThread.join();
+            } catch (InterruptedException e) {
+                System.out.println("Exception handled " + e);
+            }
         }
+
+        if (!timeControlledThread.isInterrupted())
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                System.out.println("Exception handled " + e);
+            }
 
     }
 
+    public static ArrayList<Device> getTimeControlledDevices() {
+        return timeControlledDevices;
+    }
 }

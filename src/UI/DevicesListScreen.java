@@ -19,7 +19,7 @@ public class DevicesListScreen implements Screen {
         actionMaker();
     }
 
-    private void showListDevices() {
+    public static void showListDevices() {
         var list = DataBaseStorage.getHouseArrayList();
 
         for (int i = 0; i < list.get(0).roomCount(); i++) {

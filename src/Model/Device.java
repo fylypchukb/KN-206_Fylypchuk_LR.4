@@ -1,13 +1,10 @@
 package Model;
 
-import java.time.LocalDateTime;
-
 public class Device {
     private String name;
     private int id;
     private double electricPower;
     private boolean isActive;
-    private LocalDateTime switchTime;
 
 
     public Device(String name, int id, double electricPower) {
@@ -63,23 +60,11 @@ public class Device {
         return toReturn + " - " + ((isActive) ? electricPower : 0);
     }
 
-    public String stringTime(){
-        return this + " - " + switchTime;
-    }
-
     public void activateDevice() {
         isActive = true;
     }
 
     public void deactivateDevice() {
         isActive = false;
-    }
-
-    public LocalDateTime getSwitchTime() {
-        return switchTime;
-    }
-
-    public void setSwitchTime(LocalDateTime switchTime) {
-        this.switchTime = switchTime;
     }
 }

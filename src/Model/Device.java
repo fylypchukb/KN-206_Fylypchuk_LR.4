@@ -1,9 +1,9 @@
 package Model;
 
 public class Device {
-    private String name;
-    private int id;
-    private double electricPower;
+    private final String name;
+    private final int id;
+    private final double electricPower;
     private boolean isActive;
 
 
@@ -18,24 +18,12 @@ public class Device {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getElectricPower() {
         return (isActive) ? electricPower : 0;
-    }
-
-    public void setElectricPower(double electricPower) {
-        this.electricPower = electricPower;
     }
 
     public boolean getIsActive() {
@@ -60,11 +48,4 @@ public class Device {
         return toReturn + " - " + ((isActive) ? electricPower : 0);
     }
 
-    public void activateDevice() {
-        isActive = true;
-    }
-
-    public void deactivateDevice() {
-        isActive = false;
-    }
 }

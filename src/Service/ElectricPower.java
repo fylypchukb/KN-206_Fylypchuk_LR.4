@@ -4,7 +4,7 @@ import Model.Room;
 import Model.VirtualHouse;
 
 public class ElectricPower {
-    public static double CalculateGeneralInRoom(Room room) {
+    public static double calculateGeneralInRoom(Room room) {
         double sum = 0;
         for (int i = 0; i < room.devicesCount(); i++) {
             if (room.getDevice(i).getIsActive()) {
@@ -14,7 +14,7 @@ public class ElectricPower {
         return sum;
     }
 
-    public static double CalculateGeneralInHome(VirtualHouse house) {
+    public static double calculateGeneralInHome(VirtualHouse house) {
         double sum = 0;
         for (int i = 0; i < house.roomCount(); i++) {
             Room currRoom = house.getRoom(i);

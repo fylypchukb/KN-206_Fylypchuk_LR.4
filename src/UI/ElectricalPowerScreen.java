@@ -20,11 +20,11 @@ public class ElectricalPowerScreen implements Screen {
     private void showContext() {
         VirtualHouse house = DataBaseStorage.getHouse(0);
         System.out.println("\nTotal in the house - "
-                + ElectricPower.CalculateGeneralInHome(house) + "\n");
+                + ElectricPower.calculateGeneralInHome(house) + "\n");
 
         for (int i = 0; i < house.roomCount(); i++) {
             Room room = house.getRoom(i);
-            double power = ElectricPower.CalculateGeneralInRoom(room);
+            double power = ElectricPower.calculateGeneralInRoom(room);
             System.out.println(i + 1 + ". " + room.getName() + " - " + power + " W");
         }
     }

@@ -17,7 +17,7 @@ public class SortRoomListScreenCommand implements Command {
         ArrayList<Room> sort = SortRooms.sortRooms(DataBaseStorage.getHouse(0));
 
         for (Room room : sort) {
-            System.out.println(room.getName() + " - " + ElectricPower.CalculateGeneralInRoom(room));
+            System.out.println(room.getName() + " - " + ElectricPower.calculateGeneralInRoom(room));
         }
 
         try {

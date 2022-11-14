@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Room {
     private final ArrayList<Device> devices;
-    private String name;
+    private final String name;
 
     public Room(String name) {
         this.name = name;
@@ -15,12 +15,6 @@ public class Room {
         devices.add(toAdd);
     }
 
-    public void showDevices() {
-        for (Device device : devices) {
-            System.out.println(device);
-        }
-    }
-
     public void removeDevice(int id) {
         devices.remove(id);
     }
@@ -28,10 +22,6 @@ public class Room {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int devicesCount() {

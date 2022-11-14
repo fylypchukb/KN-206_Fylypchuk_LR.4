@@ -30,17 +30,20 @@ public class MainScreen implements Screen {
             case 1:
                 command = new RedirectViewCommand(new DevicesListScreen());
                 command.execute();
+                break;
             case 2:
                 command = new RedirectViewCommand(new RoomListScreen());
                 command.execute();
+                break;
             case 3:
                 command = new RedirectViewCommand(new ElectricalPowerScreen());
                 command.execute();
+                break;
             case 4:
                 command = new RedirectViewCommand(new SearchScreen());
                 command.execute();
+                break;
             case 0:
-                return;
         }
 
 

@@ -1,7 +1,6 @@
 package Service;
 
 import Model.Device;
-import Model.Room;
 import Model.VirtualHouse;
 
 import java.util.ArrayList;
@@ -10,11 +9,6 @@ import java.util.Comparator;
 
 
 public class SortDevices {
-    public static ArrayList<Device> sortDevicesInRoom(Room room){
-        ArrayList<Device> toReturn = room.getDevicesList();
-        toReturn.sort(new SortDeviceByPower());
-        return toReturn;
-    }
 
     public static ArrayList<Device> sortHouse(VirtualHouse house){
         ArrayList<Device> toReturn = new ArrayList<>();

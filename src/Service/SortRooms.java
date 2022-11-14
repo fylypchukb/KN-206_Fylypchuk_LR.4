@@ -18,6 +18,6 @@ public class SortRooms {
 class SortRoomByPower implements Comparator<Room>{
     @Override
     public int compare(Room r1, Room r2){
-        return Double.compare(ElectricPower.CalculateGeneralInRoom(r1), ElectricPower.CalculateGeneralInRoom(r2));
+        return Double.compare(ElectricPower.calculateGeneralInRoom(r1), ElectricPower.calculateGeneralInRoom(r2));
     }
 }

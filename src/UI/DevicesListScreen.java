@@ -2,9 +2,11 @@ package UI;
 
 import Command.*;
 import DB.DataBaseStorage;
+import Logger.LoggingClass;
 import Model.Room;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 
 public class DevicesListScreen implements Screen {
 
@@ -19,6 +21,10 @@ public class DevicesListScreen implements Screen {
 
     public static void showListDevices() {
         var list = DataBaseStorage.getHouseArrayList();
+
+        if (list == null){
+            LoggingClass.logger.log(Level.SEVERE, "Database is empty");
+        }
 
         for (int i = 0; i < list.get(0).roomCount(); i++) {
             Room room = list.get(0).getRoom(i);

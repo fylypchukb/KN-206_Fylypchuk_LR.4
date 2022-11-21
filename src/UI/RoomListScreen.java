@@ -2,9 +2,11 @@ package UI;
 
 import Command.*;
 import DB.DataBaseStorage;
+import Logger.LoggingClass;
 import Model.Room;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 
 public class RoomListScreen implements Screen {
 
@@ -16,6 +18,10 @@ public class RoomListScreen implements Screen {
 
     private void showListRooms() {
         var list = DataBaseStorage.getHouseArrayList();
+
+        if (list == null){
+            LoggingClass.logger.log(Level.SEVERE, "Database is empty");
+        }
 
         System.out.println();
         for (int i = 0; i < list.get(0).roomCount(); i++) {
@@ -41,7 +47,7 @@ public class RoomListScreen implements Screen {
                 command = new RedirectViewCommand(new MainScreen());
             } else if (words[0].compareTo("/sort") == 0) {
                 command = new SortRoomListScreenCommand();
-            } else if (words[0].compareTo("help") == 0) {
+            } else if (words[0].compareTo("/help") == 0) {
                 printHelp();
             } else
                 System.out.println("Command not found! Type \"/help\"");

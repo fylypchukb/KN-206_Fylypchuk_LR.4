@@ -1,6 +1,7 @@
 package Command;
 
 import DB.DataBaseStorage;
+import Logger.LoggingClass;
 import Model.Device;
 import Model.Room;
 import Service.SearchDevice;
@@ -8,6 +9,7 @@ import Service.SearchRoom;
 import UI.MainScreen;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 public class SearchRoomScreenCommand implements Command {
 
@@ -29,27 +31,36 @@ public class SearchRoomScreenCommand implements Command {
             StringBuilder name;
             try {
                 id = Integer.parseInt(words[2]);
-                result = SearchDevice.generalSearch(DataBaseStorage.getHouse(0), id);
+                result = SearchDevice.roomSearch(room, id);
             } catch (Exception e) {
+
+                LoggingClass.logger.log(Level.WARNING, "Int parsing threw an exception. Request - " + request);
+
                 name = new StringBuilder(words[2]);
 
-                for (int i = 2; i < words.length; i++) {
+                for (int i = 3; i < words.length; i++) {
                     name.append(" ").append(words[i]);
                 }
-                result = SearchDevice.generalSearch(DataBaseStorage.getHouse(0), name.toString());
+                result = SearchDevice.roomSearch(room, name.toString());
             }
-        } else
+        } else {
             System.out.println("Room is not found!");
+            LoggingClass.logger.log(Level.WARNING, "Room was not found. Request - " + request);
+        }
 
         if (result != null) {
             System.out.println("Result: " + result);
+            LoggingClass.logger.log(Level.INFO, "Device wa found. Result - " + result.toString()
+                    + "\n\tRequest - " + request);
             try {
                 System.in.read();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        } else
+        } else {
             System.out.println("Device is not found");
+            LoggingClass.logger.log(Level.WARNING, "Device was not found. Request - " + request);
+        }
 
         new RedirectViewCommand(new MainScreen()).execute();
     }

@@ -1,6 +1,9 @@
 package Command;
 
+import Logger.LoggingClass;
 import UI.Screen;
+
+import java.util.logging.Level;
 
 public class RedirectViewCommand implements Command {
 
@@ -13,6 +16,8 @@ public class RedirectViewCommand implements Command {
 
     @Override
     public void execute() {
+        LoggingClass.logger.log(Level.INFO, "Redirected to " + screen.getClass().getName());
+
         screen.showScreen();
     }
 }

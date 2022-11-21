@@ -1,13 +1,15 @@
 package UI;
 
-import Command.RedirectViewCommand;
 import Command.Command;
+import Command.RedirectViewCommand;
 import DB.DataBaseStorage;
+import Logger.LoggingClass;
 import Model.Room;
 import Model.VirtualHouse;
 import Service.ElectricPower;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 
 public class ElectricalPowerScreen implements Screen {
 
@@ -19,6 +21,11 @@ public class ElectricalPowerScreen implements Screen {
 
     private void showContext() {
         VirtualHouse house = DataBaseStorage.getHouse(0);
+
+        if (house == null){
+            LoggingClass.logger.log(Level.SEVERE, "Database is empty");
+        }
+
         System.out.println("\nTotal in the house - "
                 + ElectricPower.calculateGeneralInHome(house) + "\n");
 
@@ -38,7 +45,9 @@ public class ElectricalPowerScreen implements Screen {
 
             if (words[0].compareTo("/main") == 0) {
                 command = new RedirectViewCommand(new MainScreen());
-            } else
+            } else if (words[0].compareTo("/help") == 0)
+                System.out.println("/main - return to main menu");
+            else
                 System.out.println("Command not found! Type \"/help\"");
         }
 

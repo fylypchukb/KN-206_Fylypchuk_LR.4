@@ -1,10 +1,12 @@
 package Service;
 
+import Logger.LoggingClass;
 import Model.Device;
 import Model.Room;
 import Model.VirtualHouse;
 
 import java.util.Scanner;
+import java.util.logging.Level;
 
 public class DeviceManager {
 
@@ -27,11 +29,13 @@ public class DeviceManager {
     public static Device createDeviceObject(Room room, String name, int id, double power) {
         if (!isUniqueDeviceName(name, room)) {
             System.out.println("Name is not unique");
+            LoggingClass.logger.log(Level.WARNING, "The name of the new device is not unique");
             return null;
         }
 
         if (!isUniqueDeviceId(id, room)) {
             System.out.println("Id is not unique");
+            LoggingClass.logger.log(Level.WARNING, "The id of the new device is not unique");
             return null;
         }
 
@@ -39,13 +43,23 @@ public class DeviceManager {
     }
 
     public static void deleteDevice(VirtualHouse house, Device device) {
+        Room forCheck = null;
+        int preCount = 0;
+
         for (int i = 0; i < house.roomCount(); i++) {
             Room room = house.getRoom(i);
             for (int j = 0; j < room.devicesCount(); j++) {
                 if (room.getDevice(j).getId() == device.getId()) {
+                    forCheck = room;
+                    preCount = room.devicesCount();
                     room.removeDevice(j);
                     break;
                 }
+            }
+
+            if (forCheck != null && forCheck.devicesCount() != preCount - 1) {
+                LoggingClass.logger.log(Level.SEVERE, "Device was not deleted.\n\tDevice - " + device.getName()
+                        + "; Room - " + room.getName());
             }
         }
     }

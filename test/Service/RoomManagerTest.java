@@ -1,11 +1,11 @@
 package Service;
 
+import Logger.LoggingClass;
 import Model.Device;
 import Model.Room;
 import Model.VirtualHouse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
 class RoomManagerTest {
 
     private final VirtualHouse house = new VirtualHouse();
@@ -29,6 +29,8 @@ class RoomManagerTest {
 
         house.addRoom(room1);
         house.addRoom(room2);
+
+        LoggingClass loggingClass = new LoggingClass();
     }
 
     @Test

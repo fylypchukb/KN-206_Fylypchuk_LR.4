@@ -1,12 +1,14 @@
 package Service;
 
+
 import Model.Device;
 import Model.Room;
 import Model.VirtualHouse;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ActiveDevicesTest {
 
@@ -56,7 +58,7 @@ class ActiveDevicesTest {
         var toCheck = ActiveDevices.showActiveHouse(house);
         for (int j = 0; j < toCheck.size(); j++) {
             for (int i = 0; i < toCheck.get(j).devicesCount(); i++) {
-                Assertions.assertEquals(array.get(j).getDevice(i).getId(), toCheck.get(j).getDevice(i).getId(),
+                assertEquals(array.get(j).getDevice(i).getId(), toCheck.get(j).getDevice(i).getId(),
                         "Function that show only active devices doesn't work correctly");
             }
         }
